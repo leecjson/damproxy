@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/leecjson/damproxy/issues"
   },
-  "homepage": "https://github.com/leecjson/damproxy#readme"
+  "homepage": "https://github.com/leecjson/damproxy#readme",
+  "dependencies": {
+    "yargs": "^14.2.0"
+  }
 }
