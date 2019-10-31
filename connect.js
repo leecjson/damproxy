@@ -1,13 +1,14 @@
 'use strict';
 
 const net = require('net');
-const proxySocket = new net.Socket();
 
 /**
  * @param {string} host 
  * @param {number} port 
  */
 module.exports = function (host, port) {
+  const proxySocket = new net.Socket();
+
   proxySocket
     .connect(port, host, () => {
       console.log('Connected');

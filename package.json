@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/leecjson/damproxy#readme",
   "dependencies": {
+    "is-valid-port": "^1.0.0",
     "yargs": "^14.2.0"
   }
 }
