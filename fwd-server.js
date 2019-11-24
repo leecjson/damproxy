@@ -11,7 +11,7 @@ class ForwardingServer {
    * @param {Tunnel} tunnel 
    */
   constructor(tunnel) {
-    assert(tunnel, 'invalid tunnel');
+    assert(tunnel && (tunnel instanceof Tunnel), 'invalid tunnel');
     this._tunnel = tunnel;
 
     /** @type {Set<net.Socket>} */

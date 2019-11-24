@@ -3,7 +3,6 @@
 const assert = require('assert');
 const EventEmitter = require('events').EventEmitter;
 const net = require('net');
-const uuid = require('uuid/v1');
 const isValidPort = require('is-valid-port');
 const ByteBuffer = require('./buffer');
 const decode = require('./decode');
