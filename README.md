@@ -1,23 +1,23 @@
-可以将公网（WAN）主机流量转到内网（LAN）主机的反向代理工具库，采用多链接+配对的方式实现。
+可以将公网（WAN）主机流量转到内网（LAN）主机的反向代理工具库，实现了内网穿透。采用多链接+配对的方式实现。
 
-A Reverse proxy tool, it let WAN server's data flows to LAN server.
+A reverse proxy tool which can let WAN server's data flows to LAN server.
 
 # Getting started
-Prepare a WAN server and a LAN server. Follow the step on both of server.
+Prepare a WAN server and a LAN server. Follow the step on both of servers.
 1. Download and install <code>Node.js(>=12.0.0)</code>.
 2. Install <code>damproxy</code>
-```shell
+```bash
 $ npm i damproxy -g
 ```
 <br />
 
 # WAN Server
-Simple example, forward data from port 80 and 443 to LAN server:
-```shell
+Simple usage, forward data from port 80 and 443 to LAN server:
+```bash
 $ damproxy listen --forward-ports 80 443
 ```
 Full options:
-```shell
+```bash
 $ damproxy listen --host 0.0.0.0 --port 8991 --pwd mypassword --forward-ports 80@17080 443@17443
 ```
 ### Options
@@ -33,13 +33,13 @@ Specify the port that will receive data from real client, then it will forward t
 <br />
 
 # LAN Server
-Simple example, connect to WAN server
-```shell
+Simple usage, connect to WAN server
+```bash
 $ damproxy connect --host x.x.x.x --forward-ports 80
 ```
 Full options:
-```shell
-$ damproxy connect --host 0.0.0.0 --port 8991 --pwd mypassword --forward-ports 80 443@20443 22@192.168.0.102:22
+```bash
+$ damproxy connect --host x.x.x.x --port 8991 --pwd mypassword --forward-ports 80 443@20443 22@192.168.0.102:22
 ```
 ### Options
 #### <code>--host</code>

@@ -3,7 +3,7 @@
 const assert = require('assert');
 const EventEmitter = require('events').EventEmitter;
 const net = require('net');
-const isValidPort = require('is-valid-port');
+const uuid = require('uuid/v1');
 const ByteBuffer = require('./buffer');
 const decode = require('./decode');
 
@@ -68,10 +68,8 @@ class ServerTunnel extends EventEmitter {
         this.emit('close');
       });
       
-
     this._socket = socket;
     this._token = uuid(null, Buffer.alloc(16), 0);
-
     decode(socket, 32, chunk => {
       if (!chunk)
         return;
