@@ -1,7 +1,22 @@
 {
   "name": "damproxy",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Reverse proxy to a LAN(Local Area Network) server",
+  "keywords": [
+    "reverse",
+    "proxy",
+    "LAN",
+    "server",
+    "forward",
+    "forwarding",
+    "network",
+    "tunnel",
+    "penetrate",
+    "pierce",
+    "private",
+    "privately",
+    "WAN"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +33,7 @@
   "homepage": "https://github.com/leecjson/damproxy#readme",
   "dependencies": {
     "is-valid-port": "^1.0.0",
+    "parse-ip-port": "^1.0.0",
     "yargs": "^14.2.0"
   }
 }
