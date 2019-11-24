@@ -1,6 +1,6 @@
 {
   "name": "damproxy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reverse proxy to a LAN(Local Area Network) server",
   "keywords": [
     "reverse",
