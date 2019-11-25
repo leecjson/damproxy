@@ -32,6 +32,7 @@ class ServerTunnel extends EventEmitter {
       this._socket.end();
     }
     this._server.close();
+    return this;
   }
 
   checkToken(token) {
@@ -201,11 +202,9 @@ class ClientTunnel {
 
   _pair(fwdport, proxyport, pairid) {
     console.log(`client-tunnel:pair  fwdport:${fwdport}, proxyport=${proxyport}, pairid=${pairid}`);
-    let addr = this._forwardPorts.get(fwdport);
+    const addr = this._forwardPorts.get(fwdport);
     if (addr == undefined) {
       return; // client not allow to forward the port
-    } else if (addr === true) {
-      addr = ['127.0.0.1', fwdport];
     }
     const socket = net.createConnection(addr[1], addr[0])
       .on('connect', () => {
