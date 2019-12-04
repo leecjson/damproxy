@@ -8,7 +8,6 @@
  * @returns {Promise<Buffer>} 
  */
 module.exports = function (stream, length, cb) {
-  let close;
   const read = () => {
     /** @type {Buffer} */
     const chunk = stream.read(length);
@@ -18,30 +17,30 @@ module.exports = function (stream, length, cb) {
       cb(chunk);
     }
   };
-  close = () => stream.removeListener('readable', read);
-  const startRead = () => {
+  function close() {
+    stream.removeListener('readable', read);
+    cb();
+  }
+  const start = () => {
     if (stream.readableEnded) {
       cb();
       return;
     }
-    if (stream.readable) {
-      const chunk = stream.read(length);
-      if (chunk != null) {
-        cb(chunk);
-        return;
-      }
-    }
-    stream.once('close', close);
-    stream.on('readable', read);
+    stream
+      .once('close', close)
+      .on('readable', read);
+
+    if (stream.readable)
+      read();
   };
   if (cb == undefined) {
     return new Promise((resolve, reject) => {
       cb = chunk => {
         chunk ? resolve(chunk) : reject()
       };
-      startRead()
+      start()
     });
   } else {
-    startRead();
+    start();
   }
 }

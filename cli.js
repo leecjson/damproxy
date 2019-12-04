@@ -28,6 +28,10 @@ yargs
       array: true,
       type: 'string',
       demandOption: true,
+    },
+    'debug': {
+      type: 'boolean',
+      default: false,
     }
   }, argv => {
     assert(net.isIP(argv.host), 'invalid --host');
@@ -53,7 +57,7 @@ yargs
       }
     });
 
-    new ClientTunnel(forwardPorts)
+    new ClientTunnel({ forwardPorts, debug: argv.debug })
       .connect(argv.host, argv.port, argv.password);
   })
   .command('listen', 'start server', {
@@ -73,6 +77,10 @@ yargs
       array: true,
       type: 'string',
       demandOption: true,
+    },
+    'debug': {
+      type: 'boolean',
+      default: false,
     }
   }, argv => {
     assert(net.isIP(argv.host), 'invalid host');
@@ -92,11 +100,11 @@ yargs
       }
     });
 
-    const tunnel = new ServerTunnel({ password: argv.password })
+    const tunnel = new ServerTunnel({ password: argv.password, debug: argv.debug })
       .listen(argv.host, argv.port);
 
     forwardPorts.forEach(p =>
-      new ForwardingServer(tunnel).listen(p[0], p[1])
+      new ForwardingServer({ tunnel, debug: argv.debug }).listen(p[0], p[1])
     );
   })
   .alias('h', 'help')
