@@ -1,6 +1,6 @@
 {
   "name": "damproxy",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A reverse proxy tool which can let WAN server's data flows to LAN server.",
   "keywords": [
     "reverse",

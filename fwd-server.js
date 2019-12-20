@@ -32,7 +32,7 @@ class ForwardingServer {
       }
       const socketName = `${socket.remoteAddress}:${socket.remotePort}`;
       socket
-        .setTimeout(10000, () => {
+        .setTimeout(60000, () => {
           if (this._debug) {
             console.log(`UserSocket(${socketName}):_timeout`);
           }
@@ -86,7 +86,7 @@ class ForwardingServer {
           }
         });
         proxysock
-          .setTimeout(10000, () => {
+          .setTimeout(60000, () => {
             if (this._debug) {
               console.log(`ProxySocket(${socketName}):_timeout`);
             }

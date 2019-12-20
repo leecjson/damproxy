@@ -337,7 +337,7 @@ class ClientTunnel extends EventEmitter {
               console.log(`ProxySocket(${socketName}):_close  had_error=${had_error}`);
             }
           })
-          .setTimeout(10000, () => {
+          .setTimeout(60000, () => {
             proxysock.destroy();
             if (this._debug) {
               console.log(`ProxySocket(${socketName}):_timeout`);
@@ -359,7 +359,7 @@ class ClientTunnel extends EventEmitter {
           console.log(`LocalSocket(${socketName}):_close  had_error=${had_error}`);
         }
       })
-      .setTimeout(10000, () => {
+      .setTimeout(60000, () => {
         socket.destroy();
         if (this._debug) {
           console.log(`LocalSocket(${socketName}):_timeout`);
